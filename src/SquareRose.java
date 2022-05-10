@@ -26,7 +26,7 @@ public class SquareRose extends JPanel {
         int[] ycoord = {yCenter - 128, yCenter + 128, yCenter + 128, yCenter - 128};
 
         g.setColor(Color.RED);
-        drawAndSplit(g, xcoord, ycoord, 1);
+        drawAndSplit(g, xcoord, ycoord, levels);
 
     }
 
@@ -42,10 +42,9 @@ public class SquareRose extends JPanel {
     }
 
     public void drawAndSplit(Graphics g, int[] x, int[] y, int times) {
-        if (times != 0) {
-            g.drawPolygon(x, y, 4);
-            drawAndSplit(g, midpoints(x), midpoints(y), times - 1);
-        }
+        if (times == 0) return;
+        g.drawPolygon(x, y, 4);
+        drawAndSplit(g, midpoints(x), midpoints(y), times - 1);
     }
     public static void main(String[] args)
     {

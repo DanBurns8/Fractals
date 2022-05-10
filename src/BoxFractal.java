@@ -50,11 +50,12 @@ public class BoxFractal extends JPanel
         int a=height/3;
         int b=width/3;
 
-        if(times==1){
-            g.fillRect(x,y,a,b);
+        if (times == 0) return;
+        else if(times==1){
+            g.fillRect(x,y,height,width);
             return;
         }
-        if(times!=0) {
+         else if(times > 0) {
             drawAndSplit(g,x,y,a,b,times-1);
             //top left^
             drawAndSplit(g,x,y+2*b,a,b,times-1);
@@ -73,7 +74,7 @@ public class BoxFractal extends JPanel
         JFrame window = new JFrame("Fractals");
         window.setBounds(200, 200, 500, 500);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        SquareRose panel = new SquareRose(5);
+        BoxFractal panel = new BoxFractal(4);
         panel.setBackground(Color.WHITE);
         Container c = window.getContentPane();
         c.add(panel);
